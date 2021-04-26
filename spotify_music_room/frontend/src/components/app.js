@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
+import HomePage from './HomePage';
 
 const App = () => {
-  return <h1>Frontend code</h1>;
+  return <HomePage content="homepage" />;
 };
 
 export default App;
