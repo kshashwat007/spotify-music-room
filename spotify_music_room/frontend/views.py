@@ -4,4 +4,5 @@ from django.shortcuts import render
 
 
 def index(request, *args, **kwargs):
+    # render checks into the templates folder
     return render(request, 'frontend/index.html')
