@@ -7,9 +7,7 @@ import CreateRoom from './CreateRoom';
 const App = () => {
   return (
     <div>
-      <HomePage content="homepage" />
-      <JoinRoom />
-      <CreateRoom />
+      <HomePage />
     </div>
   );
 };
