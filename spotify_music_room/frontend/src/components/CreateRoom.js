@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CreateRoom = (props) => {
+const CreateRoom = () => {
   return <p>This is the create room page</p>;
 };
 

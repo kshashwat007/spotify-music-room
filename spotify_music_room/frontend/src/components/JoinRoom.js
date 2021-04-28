@@ -1,6 +1,6 @@
 import React from 'react';
 
-const JoinRoom = (props) => {
+const JoinRoom = () => {
   return <p>This is the join room page</p>;
 };
 
