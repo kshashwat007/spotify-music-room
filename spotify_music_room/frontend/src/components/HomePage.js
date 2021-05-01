@@ -1,6 +1,8 @@
 import React from 'react';
 import JoinRoom from './JoinRoom';
 import CreateRoom from './CreateRoom';
+import Header from './Header';
+
 import {
   BrowserRouter as Router,
   Switch,

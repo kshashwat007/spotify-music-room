@@ -14,13 +14,15 @@ const CreateRoom = () => {
   let defaultVotes = 2;
 
   return (
-    <Grid container spacing={1}>
-      <Grid item xs={12} align="center">
-        <Typography variant="h4" component="h4">
-          Create A Room
-        </Typography>
+    <div>
+      <Grid container spacing={1}>
+        <Grid item xs={12} align="center">
+          <Typography variant="h4" component="h4">
+            Create A Room
+          </Typography>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 
