@@ -14,15 +14,34 @@ const CreateRoom = () => {
   let defaultVotes = 2;
 
   return (
-    <div>
-      <Grid container spacing={1}>
-        <Grid item xs={12} align="center">
-          <Typography variant="h4" component="h4">
-            Create A Room
-          </Typography>
-        </Grid>
+    <Grid container spacing={1}>
+      <Grid item xs={12} align="center">
+        <Typography variant="h4" component="h4">
+          Create A Room
+        </Typography>
       </Grid>
-    </div>
+      <Grid item xs={12} align="center">
+        <FormControl component="fieldset">
+          <FormHelperText>
+            <div align="center">Control Playback</div>
+            <RadioGroup row defaultValue="true">
+              <FormControlLabel
+                value="true"
+                control={<Radio color="primary" />}
+                label="play/pause"
+                labelPlacement="bottom"
+              />
+              <FormControlLabel
+                value="false"
+                control={<Radio color="secondary" />}
+                label="No control"
+                labelPlacement="bottom"
+              />
+            </RadioGroup>
+          </FormHelperText>
+        </FormControl>
+      </Grid>
+    </Grid>
   );
 };
 
