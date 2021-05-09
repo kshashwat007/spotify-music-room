@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +15,31 @@ const CreateRoom = () => {
   const { create_room_div } = useStyles();
   let defaultVotes = 2;
 
+  const [guestCanPause, setguestCanPause] = useState(true);
+  const [votesToSkip, setvotesToSkip] = useState(defaultVotes);
+
+  const handleVotesChange = (e) => {
+    setvotesToSkip(e.target.value);
+  };
+
+  const handleGuestCanPauseChange = (e) => {
+    setguestCanPause(e.target.value === 'true' ? true : false);
+  };
+
+  const buttonPressed = () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        votes_to_skip: votesToSkip,
+        guest_can_pause: guestCanPause
+      })
+    };
+    fetch('/api/create-room', requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
+
   return (
     <div className={create_room_div}>
       <Grid container spacing={1} justify="center" alignItems="center">
@@ -27,7 +52,11 @@ const CreateRoom = () => {
           <FormControl component="fieldset">
             <FormHelperText>
               <div align="center">Control Playback</div>
-              <RadioGroup row defaultValue="true">
+              <RadioGroup
+                row
+                defaultValue="true"
+                onChange={handleGuestCanPauseChange}
+              >
                 <FormControlLabel
                   value="true"
                   control={<Radio color="primary" />}
@@ -50,6 +79,7 @@ const CreateRoom = () => {
               required={true}
               type="number"
               defaultValue={defaultVotes}
+              onChange={handleVotesChange}
               inputProps={{ min: 1, style: { textAlign: 'center' } }}
             />
             <FormHelperText>
@@ -58,7 +88,7 @@ const CreateRoom = () => {
           </FormControl>
         </Grid>
         <Grid item xs={12} align="center">
-          <Button color="primary" variant="outlined">
+          <Button color="primary" variant="outlined" onClick={buttonPressed}>
             Create the room
           </Button>
         </Grid>
