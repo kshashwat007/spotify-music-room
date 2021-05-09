@@ -2,6 +2,7 @@ import React from 'react';
 import JoinRoom from './JoinRoom';
 import CreateRoom from './CreateRoom';
 import Header from './Header';
+import Room from './Room';
 
 import {
   BrowserRouter as Router,
@@ -20,6 +21,7 @@ const HomePage = () => {
         </Route>
         <Route path="/join" component={JoinRoom} />
         <Route path="/create" component={CreateRoom} />
+        <Route path="/room/:roomCode" component={Room} />
       </Switch>
     </Router>
   );
