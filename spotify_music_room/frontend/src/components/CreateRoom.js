@@ -31,7 +31,7 @@ const CreateRoom = () => {
                 <FormControlLabel
                   value="true"
                   control={<Radio color="primary" />}
-                  label="play/pause"
+                  label="Play/Pause"
                   labelPlacement="bottom"
                 />
                 <FormControlLabel
@@ -57,6 +57,16 @@ const CreateRoom = () => {
             </FormHelperText>
           </FormControl>
         </Grid>
+        <Grid item xs={12} align="center">
+          <Button color="primary" variant="outlined">
+            Create the room
+          </Button>
+        </Grid>
+        <Grid item xs={12} align="center">
+          <Button color="secondary" variant="outlined" to="/" component={Link}>
+            Back
+          </Button>
+        </Grid>
       </Grid>
     </div>
   );
@@ -65,8 +75,8 @@ const CreateRoom = () => {
 const useStyles = makeStyles(() => ({
   create_room_div: {
     margin: '0 auto',
-    width: '95%',
-    marginLeft: '100%'
+    width: '50%',
+    marginLeft: '82%'
   }
 }));
 
