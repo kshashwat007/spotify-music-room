@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Checkbox } from '@material-ui/core';
 
 const CreateRoom = () => {
   let defaultVotes = 2;
@@ -38,6 +39,19 @@ const CreateRoom = () => {
                 labelPlacement="bottom"
               />
             </RadioGroup>
+          </FormHelperText>
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} align="center">
+        <FormControl>
+          <TextField
+            required={true}
+            type="number"
+            defaultValue={defaultVotes}
+            inputProps={{ min: 1 }}
+          />
+          <FormHelperText>
+            <div align="center">Votes required to skip</div>
           </FormHelperText>
         </FormControl>
       </Grid>
