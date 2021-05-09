@@ -11,7 +11,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Checkbox, makeStyles } from '@material-ui/core';
 
-const CreateRoom = () => {
+const CreateRoom = (props) => {
   const { create_room_div } = useStyles();
   let defaultVotes = 2;
 
@@ -37,7 +37,7 @@ const CreateRoom = () => {
     };
     fetch('/api/create-room', requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => props.history.push('/room/' + data.code));
   };
 
   return (
