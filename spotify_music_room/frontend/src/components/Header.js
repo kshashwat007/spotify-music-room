@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 
 const Header = () => {
-  const { header } = useStyles();
+  const { header, root } = useStyles();
 
   const logo = (
     <ThemeProvider theme={theme}>
@@ -20,7 +20,7 @@ const Header = () => {
   );
 
   return (
-    <div style={{ marginBottom: 80 }}>
+    <div>
       <AppBar elevation={1} className={header}>
         <Toolbar>{logo}</Toolbar>
       </AppBar>
