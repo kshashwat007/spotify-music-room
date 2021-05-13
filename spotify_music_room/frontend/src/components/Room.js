@@ -18,7 +18,7 @@ const Room = (props) => {
   };
   getRoom();
   return (
-    <div>
+    <div className="center">
       <h3>{roomCode}</h3>
       <p>Votes: {votesToSkip}</p>
       <p>Guest can pause: {guestCanPause.toString()}</p>

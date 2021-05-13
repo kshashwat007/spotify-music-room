@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Button, Grid, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-const JoinRoom = () => {
+const JoinRoom = (props) => {
   const [roomCode, setroomCode] = useState('');
   const [error, setError] = useState('');
 
@@ -18,6 +18,17 @@ const JoinRoom = () => {
         code: roomCode
       })
     };
+    fetch('/api/join-room', requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          props.history.push(`/room/${roomCode}`);
+        } else {
+          setError('Room not found');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
