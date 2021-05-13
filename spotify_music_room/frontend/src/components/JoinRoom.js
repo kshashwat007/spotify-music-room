@@ -6,6 +6,20 @@ const JoinRoom = () => {
   const [roomCode, setroomCode] = useState('');
   const [error, setError] = useState('');
 
+  const handleTextChange = (e) => {
+    setroomCode(e.target.value);
+  };
+
+  const roomButtonPressed = (e) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        code: roomCode
+      })
+    };
+  };
+
   return (
     <div className="center" align="center">
       <Grid container spacing={1}>
@@ -22,7 +36,22 @@ const JoinRoom = () => {
             value={roomCode}
             helperText={error}
             variant="outlined"
+            onChange={handleTextChange}
           />
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={roomButtonPressed}
+          >
+            Enter the room
+          </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Button variant="outlined" color="secondary" to="/" component={Link}>
+            Back
+          </Button>
         </Grid>
       </Grid>
     </div>
