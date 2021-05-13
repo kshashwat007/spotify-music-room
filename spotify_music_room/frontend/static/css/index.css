@@ -26,10 +26,3 @@ body {
   left: 50%;
   transform: translate(-50%, 100%);
 }
-
-.centerroom {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 100%);
-}
