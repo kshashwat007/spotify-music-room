@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import JoinRoom from './JoinRoom';
 import CreateRoom from './CreateRoom';
 import Header from './Header';
 import Room from './Room';
+import { Grid, Button, ButtonGroup, Typography } from '@material-ui/core';
 
 import {
   BrowserRouter as Router,
@@ -17,7 +18,39 @@ const HomePage = () => {
     <Router>
       <Switch>
         <Route path="/" exact>
-          <p>This is a test page</p>
+          <div className="center">
+            <Grid container spacing={3} alignIt="center">
+              <Grid item xs={12} align="center">
+                <Typography variant="h3" component="h3">
+                  Join or create a music room!
+                </Typography>
+              </Grid>
+              <Grid item xs={12} align="center">
+                <ButtonGroup
+                  disableElevation
+                  variant="contained"
+                  color="primary"
+                >
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    to="/join"
+                    component={Link}
+                  >
+                    Join a room
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    to="/create"
+                    component={Link}
+                  >
+                    Create a room
+                  </Button>
+                </ButtonGroup>
+              </Grid>
+            </Grid>
+          </div>
         </Route>
         <Route path="/join" component={JoinRoom} />
         <Route path="/create" component={CreateRoom} />
