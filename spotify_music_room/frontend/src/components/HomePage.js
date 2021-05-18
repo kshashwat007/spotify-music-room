@@ -13,7 +13,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
-const HomePage = () => {
+const HomePage = (props) => {
   const [roomCode, setRoomCode] = useState(null);
 
   useEffect(() => {
@@ -58,6 +58,10 @@ const HomePage = () => {
     );
   };
 
+  const clearRoomCodeCallback = () => {
+    setRoomCode(null);
+  };
+
   return (
     <Router>
       <Switch>
@@ -74,7 +78,12 @@ const HomePage = () => {
         ></Route>
         <Route path="/join" component={JoinRoom} />
         <Route path="/create" component={CreateRoom} />
-        <Route path="/room/:roomCode" component={Room} />
+        <Route
+          path="/room/:roomCode"
+          render={(props) => {
+            return <Room {...props} clearRoomCode={clearRoomCodeCallback} />;
+          }}
+        />
       </Switch>
     </Router>
   );

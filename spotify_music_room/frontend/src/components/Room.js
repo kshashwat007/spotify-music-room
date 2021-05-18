@@ -6,14 +6,14 @@ const Room = (props) => {
   const [votesToSkip, setVotesToSkip] = useState(2);
   const [guestCanPause, setGuestCanPause] = useState(false);
   const [isHost, setIsHost] = useState(false);
-
+  console.log(props);
   let roomCode = props.match.params.roomCode;
 
-  const getRoom = () => {
+  const getRoom = (props) => {
     fetch('/api/get-room' + '?code=' + roomCode)
       .then((response) => {
         if (!response.ok) {
-          leaveRoomButton();
+          props.clearRoomCode();
           props.history.push('/');
         }
         return response.json();
@@ -32,6 +32,7 @@ const Room = (props) => {
       headers: { 'Content-Type': 'application/json' }
     };
     fetch('/api/leave-room', requestOptions).then((response) => {
+      props.clearRoomCode();
       props.history.push('/');
     });
   };
