@@ -10,15 +10,31 @@ const Room = (props) => {
   let roomCode = props.match.params.roomCode;
 
   const getRoom = () => {
-    fetch('/api/get-room' + '?code=' + roomCode).then((response) =>
-      response.json().then((data) => {
+    fetch('/api/get-room' + '?code=' + roomCode)
+      .then((response) => {
+        if (!response.ok) {
+          leaveRoomButton();
+          props.history.push('/');
+        }
+        return response.json();
+      })
+      .then((data) => {
         setVotesToSkip(data.votes_to_skip),
           setGuestCanPause(data.guest_can_pause),
           setIsHost(data.is_host);
-      })
-    );
+      });
   };
   getRoom();
+
+  const leaveRoomButton = () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    };
+    fetch('/api/leave-room', requestOptions).then((response) => {
+      props.history.push('/');
+    });
+  };
   return (
     <div className="center">
       <Grid container spacing={1}>
@@ -43,7 +59,11 @@ const Room = (props) => {
           </Typography>
         </Grid>
         <Grid item xs={12} align="center">
-          <Button variant="outlined" color="secondary" to="/" component={Link}>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={leaveRoomButton}
+          >
             Leave room
           </Button>
         </Grid>
