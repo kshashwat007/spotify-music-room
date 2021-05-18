@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Button, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +6,6 @@ const Room = (props) => {
   const [votesToSkip, setVotesToSkip] = useState(2);
   const [guestCanPause, setGuestCanPause] = useState(false);
   const [isHost, setIsHost] = useState(false);
-  console.log(props);
   let roomCode = props.match.params.roomCode;
 
   const getRoom = (props) => {
@@ -24,7 +23,9 @@ const Room = (props) => {
           setIsHost(data.is_host);
       });
   };
-  getRoom();
+  useEffect(() => {
+    getRoom();
+  });
 
   const leaveRoomButton = () => {
     const requestOptions = {
