@@ -32,40 +32,34 @@ const JoinRoom = (props) => {
   };
 
   return (
-    <div className="center" align="center">
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography variant="h4" component="h4">
-            Join a room
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            error={error}
-            label="Code"
-            placeholder="Enter a room code"
-            value={roomCode}
-            helperText={error}
-            variant="outlined"
-            onChange={handleTextChange}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={roomButtonPressed}
-          >
-            Enter the room
-          </Button>
-        </Grid>
-        <Grid item xs={12}>
-          <Button variant="outlined" color="secondary" to="/" component={Link}>
-            Back
-          </Button>
-        </Grid>
+    <Grid container spacing={1}>
+      <Grid item xs={12} align="center">
+        <Typography variant="h4" component="h4">
+          Join a room
+        </Typography>
       </Grid>
-    </div>
+      <Grid item xs={12} align="center">
+        <TextField
+          error={error}
+          label="Code"
+          placeholder="Enter a room code"
+          value={roomCode}
+          helperText={error}
+          variant="outlined"
+          onChange={handleTextChange}
+        />
+      </Grid>
+      <Grid item xs={12} align="center">
+        <Button variant="outlined" color="primary" onClick={roomButtonPressed}>
+          Enter the room
+        </Button>
+      </Grid>
+      <Grid item xs={12} align="center">
+        <Button variant="outlined" color="secondary" to="/" component={Link}>
+          Back
+        </Button>
+      </Grid>
+    </Grid>
   );
 };
 

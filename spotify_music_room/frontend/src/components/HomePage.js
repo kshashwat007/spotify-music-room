@@ -26,35 +26,33 @@ const HomePage = (props) => {
 
   const homePage = () => {
     return (
-      <div className="center">
-        <Grid container spacing={3} alignIt="center">
-          <Grid item xs={12} align="center">
-            <Typography variant="h3" component="h3">
-              Join or create a music room!
-            </Typography>
-          </Grid>
-          <Grid item xs={12} align="center">
-            <ButtonGroup disableElevation variant="contained" color="primary">
-              <Button
-                variant="contained"
-                color="primary"
-                to="/join"
-                component={Link}
-              >
-                Join a room
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                to="/create"
-                component={Link}
-              >
-                Create a room
-              </Button>
-            </ButtonGroup>
-          </Grid>
+      <Grid container spacing={3} alignIt="center">
+        <Grid item xs={12} align="center">
+          <Typography variant="h3" component="h3">
+            Join or create a music room!
+          </Typography>
         </Grid>
-      </div>
+        <Grid item xs={12} align="center">
+          <ButtonGroup disableElevation variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              to="/join"
+              component={Link}
+            >
+              Join a room
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              to="/create"
+              component={Link}
+            >
+              Create a room
+            </Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
     );
   };
 
