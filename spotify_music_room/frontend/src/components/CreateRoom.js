@@ -10,6 +10,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Collapse } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 
 const CreateRoom = (props) => {
   // const { create_room_div } = useStyles();
@@ -98,7 +99,25 @@ const CreateRoom = (props) => {
     <Grid container spacing={1}>
       <Grid item xs={12} align="center">
         <Collapse in={errorMsg != '' || successMsg != ''}>
-          {successMsg}
+          {successMsg != '' ? (
+            <Alert
+              severity="success"
+              onClose={() => {
+                setSuccessMsg('');
+              }}
+            >
+              {successMsg}
+            </Alert>
+          ) : (
+            <Alert
+              severity="error"
+              onClose={() => {
+                errorMsg('');
+              }}
+            >
+              {errorMsg}
+            </Alert>
+          )}
         </Collapse>
       </Grid>
       <Grid item xs={12} align="center">
