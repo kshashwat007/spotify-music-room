@@ -42,7 +42,7 @@ const Room = (props) => {
             votesToSkip={votesToSkip}
             guestCanPause={guestCanPause}
             roomCode={roomCode}
-            updateCallback={null}
+            updateCallback={getRoom}
           />
         </Grid>
         <Grid item xs={12} align="center">

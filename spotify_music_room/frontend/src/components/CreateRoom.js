@@ -57,6 +57,7 @@ const CreateRoom = (props) => {
       } else {
         setErrorMsg('Error updating room');
       }
+      props.updateCallback();
     });
   };
 
@@ -111,7 +112,7 @@ const CreateRoom = (props) => {
             <div align="center">Control Playback</div>
             <RadioGroup
               row
-              defaultValue="true"
+              defaultValue={props.guestCanPause.toString()}
               onChange={handleGuestCanPauseChange}
             >
               <FormControlLabel
