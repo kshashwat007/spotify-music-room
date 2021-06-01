@@ -8,6 +8,8 @@ const Room = (props) => {
   const [guestCanPause, setGuestCanPause] = useState(false);
   const [isHost, setIsHost] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [spotifyAuthenticated, setSpotifyAuthenticated] = useState(false);
+
   let roomCode = props.match.params.roomCode;
 
   const getRoom = (props) => {
@@ -23,11 +25,30 @@ const Room = (props) => {
         setVotesToSkip(data.votes_to_skip),
           setGuestCanPause(data.guest_can_pause),
           setIsHost(data.is_host);
+        if (isHost) {
+          authenticateSpotify();
+        }
       });
   };
   useEffect(() => {
     getRoom();
   });
+
+  const authenticateSpotify = () => {
+    fetch('/spotify/is-authenticated')
+      .then((response) => response.json())
+      .then((data) => {
+        setSpotifyAuthenticated(data.status);
+        console.log(data.status);
+        if (!data.status) {
+          fetch('/spotify/get-auth-url')
+            .then((response) => response.json())
+            .then((data) => {
+              window.location.replace(data.url);
+            });
+        }
+      });
+  };
 
   const updateShowSettings = (value) => {
     setShowSettings(value);
@@ -82,6 +103,7 @@ const Room = (props) => {
       props.history.push('/');
     });
   };
+
   if (showSettings) {
     return renderSettings();
   }
